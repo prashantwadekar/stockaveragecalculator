@@ -1,0 +1,50 @@
+<div class="container">
+  <h2 class="title">Stock market average calculator</h2>
+
+  <div class="row">
+    <!-- First Purchase -->
+    <div class="column">
+      <h3>First Purchase</h3>
+
+      <label>Units</label>
+      <input type="number" [(ngModel)]="units1" />
+
+      <label>Price per share</label>
+      <input type="number" [(ngModel)]="price1" />
+
+      <p class="info">
+        The amount invested in the 1st purchase:
+        <b>{{ (units1 ?? 0) * (price1 ?? 0) }}</b>
+      </p>
+    </div>
+
+    <!-- Second Purchase -->
+    <div class="column">
+      <h3>Second Purchase</h3>
+
+      <label>Units</label>
+      <input type="number" [(ngModel)]="units2" />
+
+      <label>Price per share</label>
+      <input type="number" [(ngModel)]="price2" />
+
+      <p class="info">
+        The amount invested in the 2nd purchase:
+        <b>{{ (units2 ?? 0) * (price2 ?? 0) }}</b>
+      </p>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div class="results">
+    <p>Total units: <b>{{ totalUnits }}</b></p>
+    <p>Total Amount: <b>{{ totalAmount }}</b></p>
+    <p>Average Price: <b>{{ avgPrice | number:'1.2-2' }}</b></p>
+  </div>
+
+  <!-- Buttons -->
+  <div class="buttons">
+    <button class="clear" (click)="clear()">Clear Fields</button>
+    <button class="calc" (click)="calculate()">Calculate Average</button>
+  </div>
+</div>

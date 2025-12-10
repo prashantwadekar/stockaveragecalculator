@@ -1,0 +1,139 @@
+/* Main container */
+.container {
+  max-width: 950px;
+  margin: 30px auto;
+  padding: 20px;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+/* Title */
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #1a3c6b;
+  text-align: center;
+}
+
+/* Two column layout */
+.row {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+/* Card */
+.column {
+  flex: 1;
+  min-width: 320px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e2e2;
+  transition: 0.3s ease;
+}
+
+.column:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Section heading */
+.column h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #23416d;
+}
+
+/* Labels */
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  font-size: 15px;
+  border: 1px solid #cfd6df;
+  border-radius: 10px;
+  background: #f8f9fb;
+  transition: 0.25s;
+  outline: none;
+}
+
+input:focus {
+  border-color: #4da3ff;
+  background: #eef6ff;
+  box-shadow: 0 0 4px rgba(77, 163, 255, 0.5);
+}
+
+/* Investment info */
+.info {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid #d1e7d1;
+  color: #137313;
+  font-size: 15px;
+}
+
+/* Results box */
+.results {
+  margin-top: 30px;
+  background: #f5faff;
+  padding: 20px 25px;
+  border-radius: 12px;
+  border-left: 5px solid #4da3ff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.results p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.results b {
+  color: #0f6bb8;
+}
+
+/* Buttons section */
+.buttons {
+  margin-top: 25px;
+  display: flex;
+  gap: 15px;
+}
+
+button {
+  padding: 12px 22px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+/* Clear button */
+.clear {
+  background: #ffd85c;
+  color: #5a4300;
+}
+
+.clear:hover {
+  background: #ffcc2e;
+}
+
+/* Calculate button */
+.calc {
+  background: #28a745;
+  color: #fff;
+}
+
+.calc:hover {
+  background: #218c3b;
+}
