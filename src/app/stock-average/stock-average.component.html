@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="title">Stock market average calculator</h2>
+  <h2 class="title">Stock Market Average Calculator</h2>
 
   <div class="row">
     <!-- First Purchase -->
@@ -9,12 +9,12 @@
       <label>Units</label>
       <input type="number" [(ngModel)]="units1" />
 
-      <label>Price per share</label>
+      <label>Price per Share</label>
       <input type="number" [(ngModel)]="price1" />
 
       <p class="info">
-        The amount invested in the 1st purchase:
-        <b>{{ (units1 ?? 0) * (price1 ?? 0) }}</b>
+        Amount Invested (1st):
+        <b>₹ {{ units1 * price1 | number : '1.2-2' }}</b>
       </p>
     </div>
 
@@ -25,26 +25,105 @@
       <label>Units</label>
       <input type="number" [(ngModel)]="units2" />
 
-      <label>Price per share</label>
+      <label>Price per Share</label>
       <input type="number" [(ngModel)]="price2" />
 
       <p class="info">
-        The amount invested in the 2nd purchase:
-        <b>{{ (units2 ?? 0) * (price2 ?? 0) }}</b>
+        Amount Invested (2nd):
+        <b>₹ {{ units2 * price2 | number : '1.2-2' }}</b>
       </p>
     </div>
   </div>
 
   <!-- Results -->
   <div class="results">
-    <p>Total units: <b>{{ totalUnits }}</b></p>
-    <p>Total Amount: <b>{{ totalAmount }}</b></p>
-    <p>Average Price: <b>{{ avgPrice | number:'1.2-2' }}</b></p>
+    <p>
+      Total Units: <b>{{ totalUnits }}</b>
+    </p>
+    <p>
+      Total Amount: <b>₹ {{ totalAmount | number : '1.2-2' }}</b>
+    </p>
+    <p>
+      Average Price per Share:
+      <b>{{ avgPrice | number : '1.2-2' }}</b>
+    </p>
   </div>
 
   <!-- Buttons -->
   <div class="buttons">
     <button class="clear" (click)="clear()">Clear Fields</button>
-    <button class="calc" (click)="calculate()">Calculate Average</button>
+    <button class="calc" (click)="calculateAverage()">Calculate Average</button>
+  </div>
+</div>
+
+<!-- CMP INPUT -->
+<div class="cmp-box">
+  <label>Current Market Price (CMP)</label>
+  <input type="number" [(ngModel)]="cmp" (input)="calculateLoss()" />
+</div>
+
+<!-- LOSS/PROFIT OUTPUT -->
+<div class="loss-section" *ngIf="showLoss">
+  <!-- FIRST LOSS -->
+  <div class="loss-box">
+    <h3>📉 Current Loss or Profit (From First Purchase Price)</h3>
+
+    <p>
+      Loss Amount or Profit Amount:
+      <b [ngStyle]="{ color: firstIsLoss ? 'red' : 'green' }">
+        {{ firstIsLoss ? '-₹ ' : '+₹ ' }}
+        {{ firstDisplayAmount | number : '1.2-2' }}
+      </b>
+    </p>
+
+    <p>
+      Loss or Profit Percentage:
+      <b [ngStyle]="{ color: firstIsLossPct ? 'red' : 'green' }">
+        {{ firstIsLossPct ? '-' : '+' }}
+        {{ firstDisplayPct | number : '1.2-2' }}%
+      </b>
+    </p>
+  </div>
+
+  <!-- AVERAGE LOSS -->
+  <div class="loss-box">
+    <h3>📉 Loss After Averaging or Profit (Based on Average Price)</h3>
+
+    <p>
+      Loss Amount or Profit Amount:
+      <b [ngStyle]="{ color: avgIsLoss ? 'red' : 'green' }">
+        {{ avgIsLoss ? '-₹ ' : '+₹ ' }}
+        {{ avgDisplayAmount | number : '1.2-2' }}
+      </b>
+    </p>
+
+    <p>
+      Loss Percentage or Profit Percentage:
+      <b [ngStyle]="{ color: avgIsLossPct ? 'red' : 'green' }">
+        {{ avgIsLossPct ? '-' : '+' }}
+        {{ avgDisplayPct | number : '1.2-2' }}%
+      </b>
+    </p>
+  </div>
+
+  <!-- LOSS REDUCED -->
+  <div class="loss-box">
+    <h3>📊 Loss Reduced or Profit Reduced</h3>
+
+    <p>
+      Amount Reduced Due to Averaging:
+      <b [ngStyle]="{ color: reducedIsLoss ? 'red' : 'green' }">
+        {{ reducedIsLoss ? '-₹ ' : '+₹ ' }}
+        {{ reducedDisplayAmount | number : '1.2-2' }}
+      </b>
+    </p>
+
+    <p>
+      Percentage Reduced:
+      <b [ngStyle]="{ color: reducedIsLossPct ? 'red' : 'green' }">
+        {{ reducedIsLossPct ? '-' : '+' }}
+        {{ reducedDisplayPct | number : '1.2-2' }}%
+      </b>
+    </p>
   </div>
 </div>
